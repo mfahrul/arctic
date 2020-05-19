@@ -40,10 +40,10 @@ var moduleCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		switch args[0] {
 		case "add":
-			app.WorkDir = app.Curdir() + string(filepath.Separator)
 			if project.Projectname == "" {
 				app.Amsyong("========== No project found. ==========")
 			}
+			app.WorkDir = app.Curdir() + string(filepath.Separator)
 			m := module.New(project)
 			s := structure.New(m)
 			m.Model = *s

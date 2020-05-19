@@ -43,6 +43,9 @@ var structCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		switch args[0] {
 		case "add":
+			if project.Projectname == "" {
+				app.Amsyong("========== No project found. ==========")
+			}
 			app.WorkDir = app.Curdir() + string(filepath.Separator)
 			var mIndex int = 0
 			moduleCount := len(project.Modules)
