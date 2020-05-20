@@ -1,6 +1,9 @@
 package app
 
-import "os"
+import (
+	"os"
+	"path/filepath"
+)
 
 //TemplateDir const
 var TemplateDir string
@@ -21,5 +24,5 @@ var WorkDir string
 
 func init() {
 	CfgPath = CfgFileName + ".yaml"
-	TemplateDir = os.TempDir() + "arctic"
+	TemplateDir = filepath.Join(os.TempDir(), "arctic")
 }
