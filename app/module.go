@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/iancoleman/strcase"
+	"github.com/jinzhu/inflection"
 )
 
 //Modules func
@@ -36,7 +37,7 @@ func (m *Module) New(project *Project) *Module {
 
 func (m *Module) readInput() {
 	scanner := bufio.NewScanner(os.Stdin)
-	m.Name = strings.ToLower(GetInput("Enter module name : ", *scanner, true))
+	m.Name = inflection.Singular(strings.ToLower(GetInput("Enter module name : ", *scanner, true)))
 }
 
 //CopyModule func

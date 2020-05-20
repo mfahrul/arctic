@@ -6,9 +6,9 @@ import (
 )
 
 //TemplateDir const
-var TemplateDir string
+// var TemplateDir string
 
-// const TemplateDir string = "/Users/muhammadfahrul/WORK/FAHRUL/arctic-tpl"
+const TemplateDir string = "/Users/muhammadfahrul/WORK/FAHRUL/arctic-tpl"
 
 //TempRepo const
 const TempRepo string = "https://github.com/mfahrul/arctic-tpl"

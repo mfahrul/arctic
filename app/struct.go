@@ -4,8 +4,10 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/iancoleman/strcase"
+	"github.com/jinzhu/inflection"
 )
 
 //Structs func
@@ -27,9 +29,9 @@ func (s *Struct) New(module *Module) *Struct {
 func (s *Struct) readInput(module *Module) {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
-		s.Name = module.Name
+		s.Name = inflection.Singular(module.Name)
 		if s.Name == "" || module.Model.Name != "" {
-			s.Name = GetInput("Enter struct name : ", *scanner, true)
+			s.Name = inflection.Singular(strings.ToLower(GetInput("Enter struct name : ", *scanner, true)))
 		}
 
 		nemu := false

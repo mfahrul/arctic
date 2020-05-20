@@ -74,10 +74,11 @@ func (p *Project) walkFunc(path string, info os.FileInfo, err error) error {
 	if !info.IsDir() {
 		fmt.Printf("Parsing file : %q\n", path)
 		funcMap := template.FuncMap{
-			"ToCamel":  strcase.ToCamel,
-			"ToSnake":  strcase.ToSnake,
-			"ToLower":  strings.ToLower,
-			"ToPlural": inflection.Plural,
+			"ToCamel":    strcase.ToCamel,
+			"ToSnake":    strcase.ToSnake,
+			"ToLower":    strings.ToLower,
+			"ToPlural":   inflection.Plural,
+			"ToSingular": inflection.Singular,
 		}
 		t := template.Must(template.New(info.Name()).Funcs(funcMap).Delims("[[", "]]").ParseFiles(path))
 

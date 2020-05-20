@@ -20,6 +20,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/jinzhu/inflection"
 	"github.com/mfahrul/arctic/app"
 	"github.com/spf13/cobra"
 )
@@ -37,7 +38,7 @@ var initCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		project.Projectpath = args[0]
 		c := strings.Split(args[0], "/")
-		project.Projectname = c[len(c)-1]
+		project.Projectname = inflection.Plural(c[len(c)-1])
 
 		project.New()
 		app.WorkDir = app.Curdir() + string(filepath.Separator) + project.Projectname + string(filepath.Separator)
