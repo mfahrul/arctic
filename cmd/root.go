@@ -25,10 +25,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-var tmpRepo = "https://github.com/mfahrul/arctic-tpl"
-var cfgFile string
-
-// var dataToParse = project
+var version bool
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -42,7 +39,13 @@ var rootCmd = &cobra.Command{
 	// to quickly create a Cobra application.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
-	//	Run: func(cmd *cobra.Command, args []string) { },
+	Run: func(cmd *cobra.Command, args []string) {
+		if version {
+			fmt.Println("ARCTIC", app.ArcticVersion)
+		} else {
+			cmd.Help()
+		}
+	},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -56,6 +59,8 @@ func Execute() {
 
 func init() {
 	cobra.OnInitialize(initConfig)
+
+	rootCmd.Flags().BoolVarP(&version, "version", "v", false, "Show version")
 }
 
 // initConfig reads in config file and ENV variables if set.

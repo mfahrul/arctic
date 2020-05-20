@@ -5,6 +5,9 @@ import (
 	"path/filepath"
 )
 
+//ArcticVersion const
+const ArcticVersion string = "V1.0.1"
+
 //TemplateDir const
 var TemplateDir string
 
