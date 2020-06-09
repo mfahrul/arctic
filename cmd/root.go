@@ -80,5 +80,7 @@ func initConfig() {
 		if err != nil {
 			fmt.Printf("unable to decode into config struct, %v", err)
 		}
+	} else {
+		fmt.Println(err)
 	}
 }

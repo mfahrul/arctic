@@ -68,7 +68,10 @@ func (s *Struct) readInput(module *Module) {
 		// fmt.Print("Enter structure type : ")
 		// fmt.Scanln(&structure.Type)
 
-		structure.Type = GetInput("Enter structure variable type : ", *scanner, true)
+		structure.Type = GetInput("Enter structure variable type (empty for string): ", *scanner, false)
+		if len(structure.Type) == 0 {
+			structure.Type = "string"
+		}
 		// structure := make(map[string]string)
 		// structure[sname] = stype
 		s.Structures = append(s.Structures, *structure)

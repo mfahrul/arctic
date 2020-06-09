@@ -86,10 +86,12 @@ Available modules in this project
 			}
 
 			project.ModuleToParse = *module
-			module.CopyModule(project)
+			module.CopyModule()
 
 			project.Save()
+			app.BackupConfig()
 			project.ParseProject()
+			app.BackupConfig()
 			break
 			// case "list":
 			// 	fmt.Println("======= Function not implemented yet. =======")

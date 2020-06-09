@@ -48,7 +48,7 @@ var initCmd = &cobra.Command{
 		m.Model = *s
 		project.Modules = append(project.Modules, *m)
 		project.ModuleToParse = *m
-		m.CopyModule(project)
+		m.CopyModule()
 
 		project.Save()
 		// app.WorkDir = app.Curdir() + project.Projectname + string(filepath.Separator)

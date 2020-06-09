@@ -1,12 +1,12 @@
 package app
 
 import (
-	"os"
+	"os/user"
 	"path/filepath"
 )
 
 //ArcticVersion const
-const ArcticVersion string = "V1.0.1"
+const ArcticVersion string = "V1.0.5"
 
 //TemplateDir const
 var TemplateDir string
@@ -27,5 +27,9 @@ var WorkDir string
 
 func init() {
 	CfgPath = CfgFileName + ".yaml"
-	TemplateDir = filepath.Join(os.TempDir(), "arctic")
+	usr, err := user.Current()
+	if err != nil {
+		Amsyong(err)
+	}
+	TemplateDir = filepath.Join(usr.HomeDir, "arctic")
 }

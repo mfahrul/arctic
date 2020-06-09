@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/exec"
 	"path"
+	"path/filepath"
 )
 
 //Execute func
@@ -148,4 +149,18 @@ func Amsyong(msg interface{}) {
 //Log func
 func Log(msg interface{}) {
 	log.Println("LOG ===>", msg)
+}
+
+//BackupConfig func
+func BackupConfig() {
+	if err := copyFile(WorkDir+"App"+string(filepath.Separator)+"config"+string(filepath.Separator)+"config.go", WorkDir+"App"+string(filepath.Separator)+"config"+string(filepath.Separator)+"config.go.temp"); err != nil {
+		panic(err)
+	}
+}
+
+//RestoreConfig func
+func RestoreConfig() {
+	if err := MoveFile(WorkDir+"App"+string(filepath.Separator)+"config"+string(filepath.Separator)+"config.go.temp", WorkDir+"App"+string(filepath.Separator)+"config"+string(filepath.Separator)+"config.go"); err != nil {
+		panic(err)
+	}
 }

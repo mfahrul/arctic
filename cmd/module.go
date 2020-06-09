@@ -49,11 +49,12 @@ var moduleCmd = &cobra.Command{
 			m.Model = *s
 			project.Modules = append(project.Modules, *m)
 			project.ModuleToParse = *m
-			m.CopyModule(project)
+			m.CopyModule()
 			fmt.Println(app.WorkDir)
 			project.Save()
+			app.BackupConfig()
 			project.ParseProject()
-
+			app.RestoreConfig()
 			break
 		case "list":
 			moduleCount := len(project.Modules)

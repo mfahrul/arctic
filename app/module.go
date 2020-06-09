@@ -18,6 +18,18 @@ func Modules() *Module {
 
 //New Func
 func (m *Module) New(project *Project) *Module {
+	if !IsDirExist(TemplateDir) {
+		fmt.Println("Template directory does not exit. Cloning it from repository")
+		// Clone the given repository to the given directory
+		// _, cloneError := git.PlainClone(TemplateDir, false, &git.CloneOptions{
+		// 	URL:      TempRepo,
+		// 	Progress: os.Stdout,
+		// })
+		Execute(Curdir(), "git", "clone", TempRepo, TemplateDir)
+	}
+
+	fmt.Println("Using " + TemplateDir + " as template directory")
+	fmt.Println("=================================")
 	fmt.Println("Creating new module")
 	m.readInput()
 	nemu := false
@@ -41,7 +53,7 @@ func (m *Module) readInput() {
 }
 
 //CopyModule func
-func (m *Module) CopyModule(project *Project) {
+func (m *Module) CopyModule() {
 	err := CopyDir(TemplateDir+string(filepath.Separator)+"App"+string(filepath.Separator)+"src"+string(filepath.Separator)+"core", WorkDir+"App"+string(filepath.Separator)+"src"+string(filepath.Separator)+m.Name)
 	if err != nil {
 		panic(err)
