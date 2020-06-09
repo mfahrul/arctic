@@ -31,5 +31,5 @@ func init() {
 	if err != nil {
 		Amsyong(err)
 	}
-	TemplateDir = filepath.Join(usr.HomeDir, "arctic")
+	TemplateDir = filepath.Join(usr.HomeDir, CfgFileName)
 }
