@@ -26,10 +26,10 @@ func (m *Module) New(project *Project) *Module {
 		// 	Progress: os.Stdout,
 		// })
 		Execute(Curdir(), "git", "clone", TempRepo, TemplateDir)
+		fmt.Println("Using " + TemplateDir + " as template directory")
+		fmt.Println("=================================")
 	}
 
-	fmt.Println("Using " + TemplateDir + " as template directory")
-	fmt.Println("=================================")
 	fmt.Println("Creating new module")
 	m.readInput()
 	nemu := false
