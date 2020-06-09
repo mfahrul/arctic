@@ -6,7 +6,7 @@ import (
 )
 
 //ArcticVersion const
-const ArcticVersion string = "V1.0.5"
+const ArcticVersion string = "V1.0.6"
 
 //TemplateDir const
 var TemplateDir string
